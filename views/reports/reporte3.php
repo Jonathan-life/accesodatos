@@ -16,7 +16,7 @@ try {
     
     ob_start();
     include_once '../../public/css/estilos-reportes.css';
-    include_once '../contents/content-report30.php';
+    include_once '../contents/content-report3.php';
     $content = ob_get_clean();
 
     $html2pdf = new Html2Pdf('P', 'A4', 'es', true, 'UTF-8', array(20, 15, 15, 15));

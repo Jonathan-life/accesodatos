@@ -1,6 +1,7 @@
 <?php
 
 require_once __DIR__ . '/../config/Database.php';
+require_once __DIR__ . '/../entities/PropietarioEntidad.php';
 
 class Propietario {
 
@@ -21,6 +22,16 @@ class Propietario {
         ";
         $query = $this->pdo->prepare($sql);
         $query->execute();
-        return $query->fetchAll(PDO::FETCH_ASSOC);
+        $rows = $query->fetchAll(PDO::FETCH_ASSOC);
+
+        $lista = [];
+        foreach ($rows as $row) {
+            $lista[] = new PropietarioEntidad(
+                (int)$row['idpropietario'], 
+                $row['apellidos'], 
+                $row['nombres']
+            );
+        }
+        return $lista;
     }
 }

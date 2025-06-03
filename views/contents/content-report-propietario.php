@@ -1,33 +1,22 @@
-<style>
-    table {
-        width: 100%;
-        border-collapse: collapse;
-    }
-    th, td {
-        border: 1px solid #666;
-        padding: 8px;
-        text-align: left;
-    }
-</style>
-
+<!-- content-report-propietario.php -->
 <h1>Reporte de Propietarios</h1>
-<table>
+<table border="1" cellspacing="0" cellpadding="5" style="width:100%; border-collapse: collapse;">
     <thead>
-        <tr>
+        <tr style="background-color:#f2f2f2;">
             <th>ID</th>
-            <th>Nombre</th>
-            <th>Teléfono</th>
-            <th>Email</th>
+            <th>Apellidos</th>
+            <th>Nombres</th>
+            <th>Nombre Completo</th>
         </tr>
     </thead>
     <tbody>
-        <?php foreach ($listaPropietarios as $prop) : ?>
-            <tr>
-                <td><?= $prop['id'] ?></td>
-                <td><?= $prop['nombre'] ?></td>
-                <td><?= $prop['telefono'] ?></td>
-                <td><?= $prop['email'] ?></td>
-            </tr>
+        <?php foreach ($listaPropietarios as $propietario): ?>
+        <tr>
+            <td><?= htmlspecialchars($propietario->getIdpropietario()) ?></td>
+            <td><?= htmlspecialchars($propietario->getApellidos()) ?></td>
+            <td><?= htmlspecialchars($propietario->getNombres()) ?></td>
+            <td><?= htmlspecialchars($propietario->getNombreCompleto()) ?></td>
+        </tr>
         <?php endforeach; ?>
     </tbody>
 </table>
